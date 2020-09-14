@@ -1,5 +1,5 @@
 const clientId = 'c4cf5e4406b14d5c9caf202f2244d04a';
-const redirectUri = process.env.NODE_ENV === 'production' ? 'http://tightfisted-minute.surge.sh' : 'http://localhost:3000';
+const redirectUri = process.env.NODE_ENV === 'production' ? 'https://lenastruts.github.io/jamming/' : 'http://localhost:3000';
 const spotifyEndpoint = 'https://api.spotify.com/v1';
 let accessToken;
 
