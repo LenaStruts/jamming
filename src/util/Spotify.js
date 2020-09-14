@@ -1,4 +1,4 @@
-const clientId = '3fc935cb7afe4c1fadc3ff643810468b';
+const clientId = 'c4cf5e4406b14d5c9caf202f2244d04a';
 const redirectUri = process.env.NODE_ENV === 'production' ? 'http://tightfisted-minute.surge.sh' : 'http://localhost:3000';
 const spotifyEndpoint = 'https://api.spotify.com/v1';
 let accessToken;
@@ -57,17 +57,13 @@ const Spotify = {
         const headers = { Authorization: `Bearer ${accessToken}` };
         let userId;
 
-        return fetch(`${spotifyEndpoint}me`, { headers: headers }
-        ).then(response => response.json()
-        ).then(jsonResponse => {
+        return fetch(`${spotifyEndpoint}/me`, { headers: headers }).then(response => response.json()).then(jsonResponse => {
             userId = jsonResponse.id;
-            return fetch(`${spotifyEndpoint}/users/${userId}/playlists`,
-            {
+            return fetch(`${spotifyEndpoint}/users/${userId}/playlists`, {
                 headers: headers,
                 method: 'POST',
                 body: JSON.stringify({ name: name })
-            }).then(response => response.json()
-            ).then(jsonResponse => {
+            }).then(response => response.json()).then(jsonResponse => {
                 const playlistId = jsonResponse.id;
                 return fetch(`${spotifyEndpoint}/users/${userId}/playlists/${playlistId}/tracks`, {
                     headers: headers,
